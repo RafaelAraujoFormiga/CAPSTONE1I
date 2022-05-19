@@ -66,6 +66,7 @@ const data = [
 ];
 
 //header
+let gg = data
 
 const header = document.createElement("header")
 document.body.appendChild(header)
@@ -116,7 +117,7 @@ divB.className = "barra"
 divP.appendChild(divB);
 
 const input = document.createElement("input")
-input.className = "search";
+input.className = "search";     
 input.type = "text";
 input.placeholder = "Pesquise por um item"; 
 divB.appendChild(input);
@@ -127,20 +128,69 @@ buttonP.type = "submit";
 buttonP.innerText = "Pesquise"
 divB.appendChild(buttonP)
 
+const divCarrinho = document.createElement("div");
+divCarrinho.className = "color"
+divP.appendChild(divCarrinho);
+
 const hc = document.createElement("h2")
 hc.className = "compras"
 hc.innerText = "Carrinho de compras"
-divB.appendChild(hc)
+divCarrinho.appendChild(hc)
 
 const divR = document.createElement("div")
 divR.className = "container"
 divP.appendChild(divR);
 
+const div_valor = document.createElement("div")
+div_valor.className = "valor"
+divP.appendChild(div_valor);
+
+const span2 = document.createElement("span");
+div_valor.appendChild(span2)
+span2.className = "flex";
+
+const span3 = document.createElement("span");
+div_valor.appendChild(span3)
+span3.className = "flex1";
+
+const p11 = document.createElement("p");
+p11.className = "p11";
+p11.innerText = "Quantidade: "
+
+const p12 = document.createElement("p");
+p12.className = "p12";
+p12.innerText = "0"
+
+const p13 = document.createElement("p");
+p13.className = "p13";
+p13.innerText = "Total: "
+
+const p14 = document.createElement("p");
+p14.className = "p14";
+p14.innerText = "R$"
+
+span2.appendChild(p11);
+span2.appendChild(p12);
+
+span3.appendChild(p13);
+span3.appendChild(p14);
+
+//ul
+
+const ul = document.createElement("ul")
+mainVitrine.appendChild(ul)
+
+
+console.log(gg)
+
+//quantidade e valor
+let quantidade = 0;
+let valor = 0;
 //Construção da lista
 function listaDeItens(array){
     
 let image =  array.img    
-let tag = array.tag
+let tagg = array.tag
 let  title = array.nameItem
 let imageDescription = array.description
 let price = array.value
@@ -149,6 +199,7 @@ let add =  array.addCart
 const li = document.createElement("li")
 
 const img = document.createElement("img")
+img.className = 'img'
 li.appendChild(img)
 
 const p1 = document.createElement("p")
@@ -159,9 +210,13 @@ const h2 = document.createElement("h2")
 h2.className = "title"
 li.appendChild(h2)
 
+const divp2 = document.createElement("div");
+divp2.className = "divp2"
+li.appendChild(divp2);
+
 const p2 = document.createElement("p")
 p2.className = "category"
-li.appendChild(p2)
+divp2.appendChild(p2)
 
 const strong = document.createElement("strong")
 strong.className = "price"
@@ -171,35 +226,85 @@ const botao = document.createElement("button")
 botao.className = "add"
 li.appendChild(botao)
 
+//add
+
+botao.addEventListener('click',
+function addCart(){
+
+  const divAdd = document.createElement("div");
+  divAdd.className = "adddiv";
+
+  const imagem = document.createElement("img");
+  imagem.src = image;
+  divAdd.appendChild(imagem);
+
+  const paragrafo = document.createElement("p");
+  paragrafo.innerText = title;
+  paragrafo.className = "addp";
+
+  const preco = document.createElement("strong") ;
+  preco.className = "strongadd"
+  preco.innerText = `R$${price}`;
+
+  const span4 = document.createElement("span");
+  divAdd.appendChild(span4);
+  span4.className = "span4"
+  span4.appendChild(paragrafo);
+  span4.appendChild(preco)
+
+  const reset = document.createElement("button")
+  reset.type = "reset"
+  reset.className = "reset"
+  reset.innerText = "Excluir item"
+  divAdd.appendChild(reset)
+
+ 
+    divR.appendChild(divAdd);
+
+    //Caixa-valores
+
+quantidade += 1
+valor += price
+
+p12.innerText = quantidade
+p14.innerText = `R$${valor},00`
+
+//Botão excluir
+  reset.addEventListener('click', 
+  function excluir(){
+   divAdd.innerText = ""
+   divR.appendChild(divAdd)
+
+   quantidade -= 1;
+   valor -= price;
+
+   p12.innerText = quantidade
+   p14.innerText = `R$${valor}`
+  });
+}
+);
 
 //Recuperando os valores
 img.src = image; 
-p1.innerText = tag;
+p1.innerText = tagg;
 h2.innerText = title;
 p2.innerText = imageDescription;
-strong.innerText = `R$${price}`;
+strong.innerText = `R$${price},00`;
 botao.innerText= add;
 
 return li
 }
 
-const saida = listaDeItens(data)
+const saida = listaDeItens(gg)
 
-const ul = document.createElement("ul")
-mainVitrine.appendChild(ul)
-
-//Chamada da lista
 function contruir(array){
+   
 
   for(let i=0;i<array.length;i++){
+
   let busca = listaDeItens(array[i])
   ul.appendChild(busca)
   }
 }
-contruir(data)
+contruir(gg)
 
-
-botao.addEventListener('click', addCart);
-function addCart(){
-  divR.innerText = li
-}

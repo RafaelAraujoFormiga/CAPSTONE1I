@@ -11,18 +11,12 @@ header{
     box-shadow: 0px 4px 40px -15px rgba(0, 0, 0, 0.25);
   }
 
-  button{
-      border: none;
-      padding:  10px 30px 10px 30px; 
-  }
+ 
 
   span{
       margin: 20px;
   }
-  img{
-      width: 280px;
-      height: 160px;
-  }
+ 
  
   .tag{
       background-color: rgb(58, 8, 58);
@@ -48,16 +42,25 @@ ul{
     margin-top: 60px;
     
 }
+.img{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
   li{
-      width: 280px;
-      margin: 10px;
-      
+      width: 230px;
+      height:400px ;
+      margin: 15px;   
+      border: 2px solid beige;
       }
-  li{
-    border: solid 1px rgb(100, 5, 100);
+  li:hover{
+    border: solid 2px rgb(100, 5, 100);
     border-radius: 10px;
+
   }
- 
+ .add{
+     background-color: beige;
+ }
  .add:hover{
     background-color: rgb(100, 5, 100);
     color: white;
@@ -66,12 +69,14 @@ ul{
  .opcao{
     background-color: rgb(100, 5, 100);
     color: white;  
+
+    border: none;
+    padding:  10px 30px 10px 30px; 
  }
     .visao{
         display: flex;
         justify-content: space-around;
  }
-
 
 header{    
     inset: 0;
@@ -97,34 +102,88 @@ header{
   }
 
   .pesquisa{
-    border: 1px solid cadetblue;
+   
+    background-color: rgb(83, 5, 83);
     width: 342px;
-    height: 360px;
-    margin-top: 80px;
+    height: 462px;
+    margin-top: 40px;
+    overflow: hidden;
 }
+
 .compras{
-    color: blueviolet;
+   color: white;
     text-align: center;
+    overflow: hidden;
 }
 .search{
     width: 210px;
     height: 30px;
 }
+.serc-bt{
+    border: 1px solid cadetblue;
+    background-color: beige;
+    width: 124px;
+    height: 36px;
+  
+}
 .serc-bt:hover{
-    background-color: blueviolet;
+    background-color:purple;
+    color: white;
     width: 124px;
     height: 36px;
 }
 .container{
     border: 1px solid cadetblue;
+    background-color: beige;
     width: 342px;
     height: 257px;
+    overflow: auto;
+    /* overflow: scroll;*/
 }
 h1{
     color: blueviolet;
 }
+
 .opcao:hover{
 
     background-color: rgb(137, 116, 156);
     color: white;
+}
+
+.reset{
+    width: 100px;
+    height:20px ;
+    border: none;
+    background-color:  rgb(93, 67, 117);
+    color: white;
+   
+}
+.reset:hover{
+    background-color: red;
+}
+.adddiv{
+    margin: 10px;
+}
+.span4{
+    float: right;
+}
+.addp{
+    width: 70px;
+}
+
+.valor{
+    background-color: rgb(46, 41, 41);
+    height: 100px;
+    color: white;
+}
+
+.flex{
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+}
+.flex1{
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
 }
